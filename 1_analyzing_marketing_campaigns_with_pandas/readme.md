@@ -7,43 +7,25 @@ To streamline and enhance marketing analysis, I developed customized functions d
 Building on this foundation, I delved into the intricacies of A/B testing. Through this exploration, I gained a nuanced understanding of the significance of segmentation in interpreting test results. This experience not only fortified my analytical skills but also underscored the importance of considering diverse user segments when evaluating the effectiveness of marketing strategies.
 
 
-# Marketing Campaign dataset
-https://www.kaggle.com/datasets/rodsaldanha/arketing-campaign/
+# Mobile Games A/B Testing - Cookie Cats
+https://www.kaggle.com/datasets/mursideyarkin/mobile-games-ab-testing-cookie-cats
 
 # About Dataset
 
 ## Context
-A response model can provide a significant boost to the efficiency of a marketing campaign by increasing responses or reducing expenses. The objective is to predict who will respond to an offer for a product or service
+This dataset includes A/B test results of Cookie Cats to examine what happens when the first gate in the game was moved from level 30 to level 40. When a player installed the game, he or she was randomly assigned to either gate_30 or gate_40.
 
 ## Content
-AcceptedCmp1 - 1 if customer accepted the offer in the 1st campaign, 0 otherwise
-AcceptedCmp2 - 1 if customer accepted the offer in the 2nd campaign, 0 otherwise
-AcceptedCmp3 - 1 if customer accepted the offer in the 3rd campaign, 0 otherwise
-AcceptedCmp4 - 1 if customer accepted the offer in the 4th campaign, 0 otherwise
-AcceptedCmp5 - 1 if customer accepted the offer in the 5th campaign, 0 otherwise
-Response (target) - 1 if customer accepted the offer in the last campaign, 0 otherwise
-Complain - 1 if customer complained in the last 2 years
-DtCustomer - date of customer’s enrolment with the company
-Education - customer’s level of education
-Marital - customer’s marital status
-Kidhome - number of small children in customer’s household
-Teenhome - number of teenagers in customer’s household
-Income - customer’s yearly household income
-MntFishProducts - amount spent on fish products in the last 2 years
-MntMeatProducts - amount spent on meat products in the last 2 years
-MntFruits - amount spent on fruits products in the last 2 years
-MntSweetProducts - amount spent on sweet products in the last 2 years
-MntWines - amount spent on wine products in the last 2 years
-MntGoldProds - amount spent on gold products in the last 2 years
-NumDealsPurchases - number of purchases made with discount
-NumCatalogPurchases - number of purchases made using catalogue
-NumStorePurchases - number of purchases made directly in stores
-NumWebPurchases - number of purchases made through company’s web site
-NumWebVisitsMonth - number of visits to company’s web site in the last month
-Recency - number of days since the last purchase
+The data we have is from 90,189 players that installed the game while the AB-test was running. The variables are:
+
+userid: A unique number that identifies each player.
+version: Whether the player was put in the control group (gate_30 - a gate at level 30) or the group with the moved gate (gate_40 - a gate at level 40).
+sum_gamerounds: the number of game rounds played by the player during the first 14 days after install.
+retention_1: Did the player come back and play 1 day after installing?
+retention_7: Did the player come back and play 7 days after installing?
+
+When a player installed the game, he or she was randomly assigned to either.
 
 ## Acknowledgements
-O. Parr-Rud. Business Analytics Using SAS Enterprise Guide and SAS Enterprise Miner. SAS Institute, 2014.
-
-## Inspiration
-The main objective is to train a predictive model which allows the company to maximize the profit of the next marketing campaign.
+This dataset is taken from DataCamp
+Cookie Cat is a hugely popular mobile puzzle game developed by Tactile Entertainment
