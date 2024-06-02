@@ -37,8 +37,8 @@ support_requests = data[data['tweet_id'].isin(unique_responses)].reset_index()
 support_requests = support_requests[support_requests['author_id'] != 'SpotifyCares']
 
 # export to csv
-spotify_data.to_csv('spotify_cares.csv')
-support_requests.to_csv('support_requests.csv')
+spotify_data.to_csv('spotify_cares.csv', index=False)
+support_requests.to_csv('support_requests.csv', index=False)
 ```
 
 Natural language remains the densest encoding of human experience we have, and innovation in NLP has accelerated to power understanding of that data, but the datasets driving this innovation don't match the real language in use today. The Customer Support on Twitter dataset offers a large corpus of modern English (mostly) conversations between consumers and customer support agents on Twitter, and has three important advantages over other conversational text datasets:
