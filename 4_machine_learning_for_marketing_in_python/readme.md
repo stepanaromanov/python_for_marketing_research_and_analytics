@@ -28,3 +28,16 @@ Understanding customer churn is crucial for businesses to identify patterns, fac
 ## File
 
 The testing file for the churn dataset consists of 64,374 customer records and serves as a separate dataset for evaluating the performance and generalization capabilities of trained churn prediction models. Each record in the testing file corresponds to a customer and contains the same set of features as the training file, such as age, gender, tenure, usage frequency, support calls, payment delay, subscription type, contract length, total spend, and last interaction. However, the churn labels are not included in the testing file as they are used for assessing the accuracy and effectiveness of the churn prediction models. The testing file allows businesses to assess the predictive power of their trained models on unseen data and gain insights into how well the models generalize to new customers. By analyzing the model's performance on the testing file, businesses can gauge the effectiveness of their churn prediction strategies and make informed decisions to optimize customer retention efforts.
+
+
+# About Dataset № 2
+
+https://www.kaggle.com/datasets/bhavikjikadara/global-electronics-retailers
+
+## Global Electronics Retailer
+
+Sales data for a fictitious global electronics retailer, including tables containing information about transactions, products, customers, stores and currency exchange rates.
+
+## Files 
+
+Customers, Data Dictionary, Exchange Rates, Products, Sales, Stores
