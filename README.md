@@ -18,3 +18,7 @@ Explored Churn Dataset, used pandas for stats, Seaborn for visuals, preprocessed
 
 ### 7 Customer Analytics and A/B Testing in Python
 Explored KPIs, A/B testing, and Python tools for visualization, manipulation, and analysis. Mastered A/B test design, execution, and communication with statistical significance.
+
+### 8 Combating Subscriber Churn with Targeted Marketing
+
+I employed machine learning to predict subscriber churn and uncover meaningful user segments for a video streaming platform's marketing analytics. As a machine learning specialist, I crafted predictive models and segmentation strategies to empower advanced marketing insights within the platform's subscriber base.
