@@ -26,3 +26,7 @@ I employed machine learning to predict subscriber churn and uncover meaningful u
 ### 9 Cleaning Bank Marketing Campaign Data
 
 Cleaning data collected from a recent bank marketing campaign aimed at promoting personal loans, ensuring it adheres to specified structure and data types for seamless integration into a PostgreSQL database, facilitating future campaign data imports.
+
+### 10. Building a Retail Data Pipeline
+
+I retrieved retail data from different sources, like SQL and parquet; prepared the data using some transformation techniques, and finally loaded the data in an easy-to-access format with loading validation.
