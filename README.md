@@ -30,3 +30,8 @@ Cleaning data collected from a recent bank marketing campaign aimed at promoting
 ### 10. Building a Retail Data Pipeline
 
 I retrieved retail data from different sources, like SQL and parquet; prepared the data using some transformation techniques, and finally loaded the data in an easy-to-access format with loading validation.
+
+### 11. Private School Students Churn Analysis
+
+I retrieved private school student data from PostgreSQL; cleaned and transformed the data, created dummy variables and scaled numeric features, and finally analyzed churn using a Random Forest model with evaluation through classification report, confusion matrix, and feature importance.
+
