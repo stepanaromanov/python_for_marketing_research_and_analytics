@@ -103,8 +103,8 @@ dvc repro
 ## Professional Certificates Notebook
 
 ```bash
-# Run the Jupyter nbconvert tool to convert 00_professional_development/certifications.ipynb notebook (professional development path) into an HTML file named certifications.html, while --no-input hides the code cells so only outputs/markdown appear.
-jupyter nbconvert --to html certifications.ipynb --no-input --output certifications.html
+# Run the Jupyter nbconvert tool to convert 00_professional_development/Certifications.ipynb notebook (professional development path) into an HTML file named Certifications.html, while --no-input hides the code cells so only outputs/markdown appear.
+jupyter nbconvert --to html Certifications.ipynb --no-input --output Certifications.html
 ```
 
 ---
