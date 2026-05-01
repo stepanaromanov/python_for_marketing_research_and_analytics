@@ -1,2 +1,27 @@
+# Jupyter
+.ipynb_checkpoints
+.jupyter/
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.so
+.venv/
+venv/
+env/
+
+# VSCode
+.vscode/
+
+# Mac/Linux
+.DS_Store
+
+# Data
+data/
+*.parquet
+*.feather
+
+# Outputs
+htmlcov/
+dist/
+build/
