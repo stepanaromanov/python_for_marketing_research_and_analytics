@@ -25,7 +25,7 @@ This project implements a **Markov Chain model** for multi-touch attribution to 
 
 ### What You'll Find in the Notebook
 
-- **Synthetic data generation** (200k journeys) with realistic power-law path lengths, seasonality, and injected causal lifts for validation.
+- **Synthetic data generation** (200k journeys) with realistic path lengths, and injected causal lifts for validation.
 - **Markov Chain implementation** from scratch (transition matrix + removal effects).
 - **Comparison**: Last-click vs. Markov attribution shares with clear visualizations.
 - **Production SQL query** for aggregating real journey data from a marketing events table.
