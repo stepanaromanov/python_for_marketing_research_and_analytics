@@ -8,7 +8,7 @@
 
 **E-commerce channel credit allocation with ground-truth validation and MLOps deployment**
 
-**Stack:** `pandas` · `networkx` · `plotly` · `mlflow` · `dvc` · `numpy`
+**Stack:** `pandas` · `plotly` · `mlflow` · `dvc` · `numpy`
 
 ---
 
@@ -48,7 +48,45 @@ This project implements a **Markov Chain model** for multi-touch attribution to 
 
 ---
 
-This is a strong portfolio piece showcasing both marketing analytics depth and modern data engineering/MLOps practices. Perfect for roles in marketing analytics, growth, or data science.
+**Project 02: Shapley Value Attribution for Paid Media** 
+
+**Fair marginal contribution analysis for overlapping B2B channels with ground-truth validation and MLOps** 
+
+**Stack:** `shap` · `pandas` · `plotly` · `mlflow` · `dvc` · `numpy` · `itertools` 
+
+---
+
+### 📋 Executive Summary  
+This project implements **Shapley Value decomposition** (from cooperative game theory) for multi-touch attribution. It fairly allocates credit to marketing channels by computing each channel’s average marginal contribution across *all possible coalitions*, solving the overlap problem that plagues heuristic models (last-click, linear, time-decay). 
+
+**Key Insight:** Naive proportional allocation (based on channel frequency) distorts performance. Shapley reveals **Paid Search** is significantly under-credited, while **Webinar** and **Direct** are over-credited. The model exactly recovers the injected ground-truth marginal effects. 
+
+**Shapley is the only attribution method** that satisfies the four core axioms of fairness: Efficiency, Symmetry, Dummy, and Additivity.
+
+### 🎯 Business Impact  
+- **Reallocation recommendation**: Increase investment in under-credited **Paid Search** (strong early-funnel driver) and reduce over-reliance on **Webinar** and **Direct**. 
+- Model validated against **synthetic ground-truth causal lifts** (+11% incremental revenue per channel in coalitions), which Shapley perfectly recovers. 
+- Production-ready for B2B CRM data via SQL cohort aggregation. 
+
+### What You'll Find in the Notebook  
+- **Synthetic B2B data generation** (200k deals) with realistic channel overlap, lognormal revenue, and controlled ground-truth marginal contributions. 
+- **Shapley implementation** — both exact (all permutations) and Monte-Carlo sampling for scalability, with custom `value_function` based on coalition revenue. 
+- **Comparison tables & visualizations**: Naive shares vs. Shapley shares, bias analysis, and interactive Plotly charts. 
+- **Production SQL query** for aggregating channel coalitions per closed-won deal within attribution windows. 
+- **EDA** of coalition patterns and revenue distributions. 
+- **MLOps practices**: MLflow experiment tracking & Model Registry, DVC pipelines, reproducible data generation. 
+- Executive summary + technical appendix (math, implementation details, scalability notes). 
+
+### Skills Demonstrated  
+- Cooperative game theory & fair credit allocation (Shapley values) 
+- Monte-Carlo & exact permutation methods for combinatorial problems 
+- Ground-truth validation for attribution models 
+- SQL for production journey/coalition reconstruction 
+- MLOps (MLflow + DVC) and reproducible experimentation 
+- Clear communication for technical and executive audiences 
+
+**Folder:** [`02_shapley_attribution/`](https://github.com/stepanaromanov/python_for_marketing_research_and_analytics/tree/main/02_shapley_attribution) 
+**Notebook:** [`02_shapley_attribution.ipynb`](https://github.com/stepanaromanov/python_for_marketing_research_and_analytics/blob/main/02_shapley_attribution/02_shapley_attribution.ipynb) 
 
 ---
 
