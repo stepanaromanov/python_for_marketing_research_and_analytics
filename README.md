@@ -89,6 +89,92 @@ This project implements **Shapley Value decomposition** (from cooperative game t
 **Notebook:** [`02_shapley_attribution.ipynb`](https://github.com/stepanaromanov/python_for_marketing_research_and_analytics/blob/main/02_shapley_attribution/02_shapley_attribution.ipynb) 
 
 ---
+**Project 03: Meridian Media Mix Modeling (MMM)**
+
+**Digital + TV spend with geo-level Bayesian inference and automated retraining**
+
+**Stack:** `meridian` · `tensorflow_probability` · `arviz` · `mlflow` · `dvc`
+
+---
+
+### 📋 Executive Summary
+
+This project builds a **full Bayesian Media Mix Model** using Google's Meridian framework. It estimates true channel ROAS while accounting for **saturation (Hill function)**, **carry-over (adstock)**, **seasonality**, and **geo-level heterogeneity**.
+
+**Key Insights:**
+- **Display** is loss-making at current spend (effective ROAS 0.9×).
+- **TV** is heavily saturated (87% of max response).
+- **Paid Search** has the highest growth potential (Max ROAS 3.8× with significant headroom).
+- Geo variation: ±18% ROAS multiplier across regions.
+
+**Business Impact:** Recommended reallocation of **$180k** from Display to Paid Search → projected **+$43k** incremental revenue.
+
+### What You'll Find in the Notebook
+
+- Synthetic multi-geo panel data generation (104 weeks × 5 regions) with injected ground-truth effects.
+- Full Meridian model setup: priors, hierarchical partial pooling, and posterior diagnostics (R-hat, ESS, LOO).
+- Response curves, saturation analysis, and carry-over estimation.
+- Budget optimizer integration using Meridian’s built-in tools.
+- Production SQL template for weekly geo-level aggregation.
+- MLOps: MLflow tracking, DVC pipelines, and drift detection for automated retraining.
+
+### Skills Demonstrated
+
+- Bayesian hierarchical modeling & MCMC diagnostics
+- Media mix modeling (saturation + adstock)
+- Geo-level partial pooling
+- Production-grade MMM deployment
+- Clear executive communication of complex Bayesian results
+
+**Folder:** [03_meridian_mmm/](https://github.com/stepanaromanov/python_for_marketing_research_and_analytics/tree/main/03_meridian_mmm)  
+**Notebook:** [03_meridian_mmm_portfolio.ipynb](https://github.com/stepanaromanov/python_for_marketing_research_and_analytics/blob/main/03_meridian_mmm/03_meridian_mmm_portfolio.ipynb)
+
+---
+
+**Project 04: Shapley-Based Budget Optimizer**
+
+**MLOps-optimised budget reallocation with PuLP linear programming and canary rollout**
+
+**Stack:** `pulp` · `mlflow` · `dvc` · `scipy` · `statsmodels`
+
+---
+
+### 📋 Executive Summary
+
+This notebook takes **Shapley-attributed ROAS** as input and solves a **constrained linear program** to find the optimal budget split across channels that maximises projected revenue **without increasing total spend**.
+
+**Optimisation Result (example):**
+- +19% projected revenue lift from reallocation alone.
+- Paid Search gains +$38k, Display reduced by $38k, etc.
+- Hard constraints: min/max spend per channel respected.
+
+**Key Features:**
+- PuLP exact solver (<0.1s).
+- Stochastic simulation using ROAS volatility.
+- Executive HTML KPI card.
+- Full MLflow logging + canary deployment guardrails.
+
+### What You'll Find in the Notebook
+
+- Shapley ROAS ingestion and validation.
+- Linear programming formulation (objective + constraints).
+- Sensitivity analysis and what-if scenarios.
+- Production SQL for rolling 90-day ROAS calculation.
+- Executive one-pager renderer + audit-ready MLflow artifacts.
+
+### Skills Demonstrated
+
+- Mathematical optimization (PuLP linear programming)
+- Budget allocation under constraints
+- Integration of attribution models into downstream optimisation
+- Production MLOps serving patterns
+- Stochastic simulation for risk assessment
+
+**Folder:** [04_budget_optimizer/](https://github.com/stepanaromanov/python_for_marketing_research_and_analytics/tree/main/04_budget_optimizer)  
+**Notebook:** [04_budget_optimizer.ipynb](https://github.com/stepanaromanov/python_for_marketing_research_and_analytics/blob/main/04_budget_optimizer/04_budget_optimizer.ipynb)
+
+---
+
 
 ## 📦 Legacy Work — `_legacy/`
 
