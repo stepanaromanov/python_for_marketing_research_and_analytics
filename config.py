@@ -27,6 +27,7 @@ C_PINK       = '#CC79A7'
 C_SKY        = '#56B4E9'
 C_VERMILLION = '#D55E00'
 C_YELLOW     = '#F0E442'
+C_PURPLE     = '#9467BD'
 C_GRAY       = '#888780'
 C_POSITIVE   = '#1A9850'  # RdYlGn dark green
 C_NEGATIVE   = '#D73027'  # RdYlGn dark red
