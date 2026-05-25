@@ -175,6 +175,57 @@ This notebook takes **Shapley-attributed ROAS** as input and solves a **constrai
 
 ---
 
+**Project 05: Full Multi-Touch Attribution Engine**
+
+**Comprehensive comparison of 8 attribution models with ground-truth validation and production MLOps**
+
+**Stack:** `networkx` · `numpy` · `pandas` · `plotly` · `mlflow` · `dvc`
+
+---
+
+### 📋 Executive Summary
+
+A complete **multi-touch attribution comparison suite** evaluating 8 models (Markov Removal, Exact Shapley, MC Shapley, Hybrid, Time-Decay, Last-Touch, First-Touch, Linear) on 50,000 synthetic customer journeys with injected causal effects.
+
+**Key Result:** Markov Removal model achieves the highest accuracy (MAE **0.003**) against ground truth, significantly outperforming traditional heuristic models.
+
+### 🎯 Business Impact
+
+* **Model ranking validated** against known causal contributions (injected λ effects)
+* Identifies clear biases in common models (e.g., Last-Touch heavily over-credits bottom-funnel channels)
+* Provides production-ready implementations suitable for real marketing event data
+* Includes MLOps practices for scalable, monitored attribution pipelines
+
+### What You'll Find in the Notebook
+
+* **Synthetic data generation** with realistic journey patterns and controllable causal effects
+* **Implementation of 8 attribution models** from scratch:
+  * Markov Chain (removal effect via fundamental matrix)
+  * Exact & Monte Carlo Shapley Value
+  * Time-Decay (with λ recovery via OLS)
+  * Hybrid Markov-Shapley
+  * Classic heuristics (Last/First/Linear)
+* **Comprehensive validation** — 90+ sanity checks and statistical tests
+* **Advanced extensions**: Online incremental transition matrix updates, CLV decomposition
+* **Production SQL** templates for journey aggregation
+* **MLOps stack**: DVC pipelines, MLflow tracking, Docker, GitHub Actions CI/CD with drift detection
+* Rich interactive Plotly visualizations and performance comparisons
+
+### Skills Demonstrated
+
+* Advanced attribution modeling (Markov chains, Shapley values, hybrid approaches)
+* Causal inference & ground-truth validation techniques
+* Linear algebra & probabilistic modeling (`networkx`, fundamental matrix)
+* Time-decay parameter recovery using OLS
+* Production MLOps (DVC + MLflow + CI/CD)
+* Comprehensive model evaluation frameworks and sanity testing
+* Clear technical + executive communication
+
+**Folder:** [05_multi_touch_attribution_engine/](https://github.com/stepanaromanov/python_for_marketing_research_and_analytics/tree/main/05_multi_touch_attribution_engine)
+
+**Notebook:** [5_multi_touch_attribution_engine.ipynb](https://github.com/stepanaromanov/python_for_marketing_research_and_analytics/blob/main/05_multi_touch_attribution_engine/5_multi_touch_attribution_engine.ipynb)
+
+---
 
 ## 📦 Legacy Work — `_legacy/`
 
