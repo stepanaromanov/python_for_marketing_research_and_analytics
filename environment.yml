@@ -22,7 +22,7 @@ dependencies:
   - python=3.12
 
   # ── Core data stack ───────────────────────────────────────
-  - numpy=2.3.5 
+  - numpy=2.3.5           # TF 2.18+ supports NumPy 2.x natively
   - pandas=2.3.3
   - scipy=1.16.3
 
@@ -43,15 +43,12 @@ dependencies:
   - statsmodels=0.14.6
 
   # ── Bayesian ──────────────────────────────────────────────
-  - pymc=6.0.1
-  - arviz-base=1.1.0      # new split package — used by PyMC 6
-  - arviz-stats=1.1.0     # new split package — used by PyMC 6
-  - arviz-plots=1.1.0     # new split package — used by PyMC 6
-  - arviz=0.19.0          # legacy shim — required by google-meridian
-
-  # ── Optimisation ──────────────────────────────────────────
-  - pulp=3.3.1
-  - highspy=1.14.0
+  - pymc=6.0.0
+  - arviz-base=1.1.0        # new split package — used by PyMC 6
+  - arviz-stats=1.1.0       # new split package — used by PyMC 6
+  - arviz-plots=1.1.0       # new split package — used by PyMC 6
+  # arviz=0.19.0 (legacy shim for Meridian) installed via pip below —
+  # conda cannot hold both 0.19.0 and >=1.1.0 simultaneously
 
   # ── Notebook environment ──────────────────────────────────
   - jupyterlab=4.2
@@ -69,7 +66,12 @@ dependencies:
   # ── pip-only packages ─────────────────────────────────────
   - pip
   - pip:
+    # Optimisation
+    - pulp==3.3.1
+    - highspy==1.14.0
     # Google Meridian MMM — pulls tensorflow 2.20 + tfp-nightly
+    # arviz=0.19.0 shim installed first so Meridian's legacy import works
+    - arviz==0.19.0
     - google-meridian==1.6.1
     # MLflow
     - mlflow==3.12.0
@@ -78,7 +80,7 @@ dependencies:
     # Drift monitoring
     - evidently==0.4.33
     # Causal ML
-    - econml==0.15.1
+    - econml==0.16.0
     # Stats
     - pingouin==0.5.4
     # Plotly static export
