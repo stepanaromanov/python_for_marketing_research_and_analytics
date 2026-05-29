@@ -1,12 +1,14 @@
 # Portfolio Environment Setup — Windows
+
 ## Marketing Analytics
 
 ---
 
 ## Step 1 — Install Anaconda
 
-Download from https://www.anaconda.com/download  
+Download from <https://www.anaconda.com/download>  
 Choose the **Windows 64-bit** installer. During install:
+
 - ✅ "Add Anaconda to PATH" — check this
 - ✅ "Register as default Python" — check this
 
@@ -17,14 +19,14 @@ Choose the **Windows 64-bit** installer. During install:
 Open **Anaconda Prompt** (search in Start menu) and run:
 
 ```bash
-# Clone your repo first
+# Clone the repo
 git clone https://github.com/stepanaromanov/python_for_marketing_research_and_analytics
 cd python_for_marketing_research_and_analytics
 
-# Create environment from file
+# Create environment from file (this takes 5–10 minutes)
 conda env create -f environment.yml
 
-# Activate it — do this every time you start work
+# Activate — do this every time you start work
 conda activate marketing-portfolio
 
 # Verify
@@ -32,31 +34,14 @@ python --version        # should say 3.12.x
 jupyter lab --version   # should say 4.x
 ```
 
----
-
-## Step 3 — Install heavy optional packages (when needed)
-
-Install these **one project at a time** — they are large and slow:
-
-```bash
-conda activate marketing-portfolio
-
-# PyMC — needed for Projects 03, 06, 07, 08, 10
-conda install -c conda-forge pymc
-
-# Meridian (Google MMM) — needed for Projects 03, 06, 07, 08, 09
-pip install meridian
-
-# MLflow (if pip install failed)
-pip install mlflow
-
-# DVC
-pip install dvc
-```
+> **Why conda and not pip?**  
+> This portfolio uses both PyMC (PyTensor backend) and Google Meridian (TensorFlow backend).  
+> Conda's dependency solver resolves these into a single working environment.  
+> Running `pip install` alone will produce conflicts.
 
 ---
 
-## Step 4 — Launch JupyterLab
+## Step 3 — Launch JupyterLab
 
 ```bash
 conda activate marketing-portfolio
@@ -64,13 +49,13 @@ cd python_for_marketing_research_and_analytics
 jupyter lab
 ```
 
-This opens JupyterLab in your browser at `http://localhost:8888`
+Opens JupyterLab in your browser at `http://localhost:8888`
 
 ---
 
-## Step 5 — Set up MLflow tracking server (local)
+## Step 4 — Set up MLflow tracking server (local)
 
-In a **second** Anaconda Prompt window:
+Open a **second** Anaconda Prompt window:
 
 ```bash
 conda activate marketing-portfolio
@@ -78,51 +63,34 @@ cd python_for_marketing_research_and_analytics
 mlflow ui
 ```
 
-Opens MLflow dashboard at `http://localhost:5000`  
+Opens the MLflow dashboard at `http://localhost:5000`  
 Keep this running while you work — all experiment runs log here automatically.
 
 ---
 
-## Step 6 — Set up DVC
+## Step 5 — Professional Certificates notebook
 
 ```bash
-conda activate marketing-portfolio
-cd python_for_marketing_research_and_analytics
-
-# Initialise DVC in your repo (one time only)
-dvc init
-git add .dvc .dvcignore
-git commit -m "init: add DVC"
-
-# Run a pipeline
-dvc repro
+# Convert the certifications notebook to a clean HTML file (no code cells shown)
+jupyter nbconvert --to html 00_professional_development/Certifications.ipynb \
+  --no-input --output Certifications.html
 ```
 
 ---
 
-## Professional Certificates Notebook
-
-```bash
-# Run the Jupyter nbconvert tool to convert 00_professional_development/Certifications.ipynb notebook (professional development path) into an HTML file named Certifications.html, while --no-input hides the code cells so only outputs/markdown appear.
-jupyter nbconvert --to html Certifications.ipynb --no-input --output Certifications.html
-```
-
----
-
-## Recommended Windows folder structure
+## Recommended folder structure
 
 ```
 C:\Users\YourName\
   └── portfolio\
-      ├── environment.yml          ← this file
+      ├── environment.yml
       ├── requirements.txt
       ├── 00_professional_development\
       ├── 01_markov_mta\
       │   ├── 01_markov_chain_mta.ipynb
       │   ├── src\
       │   ├── data\
-      │   ├── models\
-      │   └── dvc.yaml
+      │   └── models\
       ├── 02_shapley_attribution\
       ├── 03_meridian_mmm\
       └── ...
@@ -136,7 +104,9 @@ C:\Users\YourName\
 |---|---|
 | `conda: command not found` | Restart terminal after Anaconda install |
 | `ModuleNotFoundError: mlflow` | `pip install mlflow` inside activated env |
+| `ModuleNotFoundError: meridian` | `pip install google-meridian==1.6.1` inside activated env |
 | JupyterLab opens wrong Python | Kernel → Change Kernel → marketing-portfolio |
-| DVC `No such command` | `pip install dvc` in activated env |
 | Plotly charts not showing | `pip install ipywidgets` then restart kernel |
-| PyMC install fails | Use `conda install -c conda-forge pymc` not pip |
+| PyMC install fails | Use `conda install -c conda-forge pymc` — do not use pip |
+| TensorFlow/Meridian conflict with PyMC | Only occurs with pip. Use conda env create as above |
+| `kaleido` static export broken | Downgrade: `pip install kaleido==0.1.0` |

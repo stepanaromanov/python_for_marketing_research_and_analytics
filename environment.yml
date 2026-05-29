@@ -7,104 +7,85 @@
 # Update  : conda env update -f environment.yml --prune
 # Export  : conda env export > environment_lock.yml
 # Remove  : conda env remove -n marketing-portfolio
+#
+# Note: PyMC 6 and Google Meridian coexist here via conda.
+# PyMC 6 uses the new split arviz packages (arviz-base/stats/plots).
+# Meridian uses the legacy arviz==0.19.0 shim.
+# Conda installs both — do NOT replicate this with pip only.
 # ============================================================
-
 name: marketing-portfolio
-
 channels:
   - conda-forge       # preferred — better package resolution
   - defaults
-
 dependencies:
   # ── Python ────────────────────────────────────────────────
   - python=3.12
 
   # ── Core data stack ───────────────────────────────────────
-  - numpy>=1.26,<2.0
-  - pandas>=2.2,<3.0
-  - scipy>=1.13
+  - numpy=2.3.5 
+  - pandas=2.3.3
+  - scipy=1.16.3
 
   # ── Visualisation ─────────────────────────────────────────
-  - plotly>=5.22
-  - matplotlib>=3.9
-  - seaborn>=0.13
+  - matplotlib=3.10.6
+  - seaborn=0.13.2
+  - plotly=5.24.1
+  - altair=6.0.0
+  - plotnine=0.15.3
 
-  # ── Graph (Projects 01, 05, 12) ───────────────────────────
-  - networkx>=3.3
+  # ── Graph ─────────────────────────────────────────────────
+  - networkx=3.6.1
 
-  # ── Causal ML (Projects 11, 13) ───────────────────────────
-  - scikit-learn>=1.5
+  # ── Machine learning ──────────────────────────────────────
+  - scikit-learn=1.8.0
 
-  # ── Statistics (Project 17) ───────────────────────────────
-  - statsmodels>=0.14
+  # ── Statistics ────────────────────────────────────────────
+  - statsmodels=0.14.6
 
-  # ── Optimisation (Projects 04, 08, 14) ────────────────────
-  - pulp>=2.9
+  # ── Bayesian ──────────────────────────────────────────────
+  - pymc=6.0.1
+  - arviz-base=1.1.0      # new split package — used by PyMC 6
+  - arviz-stats=1.1.0     # new split package — used by PyMC 6
+  - arviz-plots=1.1.0     # new split package — used by PyMC 6
+  - arviz=0.19.0          # legacy shim — required by google-meridian
+
+  # ── Optimisation ──────────────────────────────────────────
+  - pulp=3.3.1
+  - highspy=1.14.0
 
   # ── Notebook environment ──────────────────────────────────
-  - jupyterlab>=4.2
-  - ipywidgets>=8.1
-  - nbformat>=5.10
-  - nbconvert>=7.16
-  - nodejs>=20          # required for JupyterLab extensions
+  - jupyterlab=4.2
+  - ipywidgets=8.1
+  - nbformat=5.10
+  - nbconvert=7.16
+  - nodejs=20
 
   # ── Utilities ─────────────────────────────────────────────
-  - python-dotenv>=1.0
-  - pyyaml>=6.0
-  - tqdm>=4.66
-  - joblib>=1.4
-  - git                 # ensure git available in environment
+  - pyyaml=6.0.3
+  - xarray=2026.4.0
+  - tqdm=4.67.3
+  - git
 
-  # ── pip-only packages (no conda build available) ──────────
+  # ── pip-only packages ─────────────────────────────────────
   - pip
   - pip:
-    # Shapley & explainability
-    - shap>=0.46
-
+    # Google Meridian MMM — pulls tensorflow 2.20 + tfp-nightly
+    - google-meridian==1.6.1
     # MLflow
-    - mlflow>=2.14
-
+    - mlflow==3.12.0
     # DVC
-    - dvc>=3.51
-
+    - dvc==3.51.0
     # Drift monitoring
-    - evidently>=0.4.33
-
-    # API serving
-    - fastapi>=0.111
-    - uvicorn[standard]>=0.30
-    - pydantic>=2.7
-
+    - evidently==0.4.33
     # Causal ML
-    - econml>=0.15
-
-    # Pingouin (stats)
-    - pingouin>=0.5.4
-
+    - econml==0.15.1
+    # Stats
+    - pingouin==0.5.4
     # Plotly static export
-    - kaleido>=0.2.1
-
-    # ── Heavy optional installs ───────────────────────────
-    # Uncomment one at a time — these are large and may need
-    # extra system dependencies (C compiler, Fortran, etc.)
-
-    # PyMC — Bayesian MMM (Projects 03, 06, 07, 08, 10)
-    # Requires: conda install -c conda-forge pymc
-    # - pymc>=5.16
-
-    # Meridian — Google's MMM library (Projects 03, 06, 07, 08, 09)
-    # Requires TensorFlow — install separately:
-    # pip install meridian
-    # - meridian-mmm>=0.1
-
-    # Apache Airflow — orchestration (Projects 05, 08, 14, 20)
-    # Strongly recommended via Docker instead:
-    # https://airflow.apache.org/docs/docker-stack/
-    # - apache-airflow>=2.9
-
-    # Kafka — streaming MLOps (Project 12)
-    # - kafka-python>=2.0
-
-    # ONNX — model export for Triton serving (Project 10)
-    # - onnx>=1.16
-    # - onnxmltools>=1.12
+    - kaleido==0.1.0
+    # API serving
+    - fastapi==0.136.1
+    - uvicorn[standard]==0.46.0
+    - pydantic==2.11.5
+    # Explainability
+    - shap==0.46.0
