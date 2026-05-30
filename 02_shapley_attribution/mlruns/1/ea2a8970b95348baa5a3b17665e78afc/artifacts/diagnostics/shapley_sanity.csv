@@ -1,0 +1,44 @@
+check,status,detail
+df has all channel columns and revenue column,PASS ✓,
+All channel values binary (0/1),PASS ✓,"{'paid_search': [0, 1], 'linkedin': [0, 1], 'webinar': [0, 1], 'email_nurture': [0, 1], 'direct': [0, 1]}"
+Revenue all >= 0,PASS ✓,min=1028.00
+No NaN in df,PASS ✓,nan_count=0
+N rows matches N_DEALS,PASS ✓,len=200000  N_DEALS=200000
+"Channel paid_search active rate in [0.3, 0.8]",PASS ✓,rate=0.5496
+"Channel linkedin active rate in [0.3, 0.8]",PASS ✓,rate=0.5499
+"Channel webinar active rate in [0.3, 0.8]",PASS ✓,rate=0.5499
+"Channel email_nurture active rate in [0.3, 0.8]",PASS ✓,rate=0.5504
+"Channel direct active rate in [0.3, 0.8]",PASS ✓,rate=0.5521
+value_function(empty) >= 0,PASS ✓,v_empty=29909.26
+value_function(all) >= value_function(empty),PASS ✓,v_all=61440.16  v_empty=29909.26
+value_function returns float,PASS ✓,type=<class 'float'>
+value_function({paid_search}) > 0 (rows exist),PASS ✓,v=39678.78
+value_function({linkedin}) > 0 (rows exist),PASS ✓,v=36510.00
+value_function({webinar}) > 0 (rows exist),PASS ✓,v=36100.06
+value_function({email_nurture}) > 0 (rows exist),PASS ✓,v=36806.78
+value_function({direct}) > 0 (rows exist),PASS ✓,v=33277.78
+Adding paid_search does not crash value (within 30%),PASS ✓,v_with=61440.16  v_without=52109.93
+Adding linkedin does not crash value (within 30%),PASS ✓,v_with=61440.16  v_without=54229.64
+Adding webinar does not crash value (within 30%),PASS ✓,v_with=61440.16  v_without=56909.72
+Adding email_nurture does not crash value (within 30%),PASS ✓,v_with=61440.16  v_without=53104.58
+Adding direct does not crash value (within 30%),PASS ✓,v_with=61440.16  v_without=57341.62
+All Shapley raw values finite,PASS ✓,"values=[9309.0065, 6895.0291, 5054.1042, 7084.7742, 3187.9835]"
+Efficiency axiom: sum(phi) ≈ v(grand) - v(empty) within 5%,PASS ✓,sum_phi=31530.90  v_grand-v_empty=31530.90  err=0.00
+MC shares sum to 1,PASS ✓,sum=1.00000000
+Exact shares sum to 1,PASS ✓,sum=1.00000000
+"All MC shares in [0, 1]",PASS ✓,min=0.1011  max=0.2952
+MC ranking matches GT ranking,PASS ✓,"gt=['paid_search', 'email_nurture', 'linkedin', 'webinar', 'direct']  mc=['paid_search', 'email_nurture', 'linkedin', 'webinar', 'direct']"
+Exact ranking matches GT ranking,PASS ✓,"gt=['paid_search', 'email_nurture', 'linkedin', 'webinar', 'direct']  exact=['paid_search', 'email_nurture', 'linkedin', 'webinar', 'direct']"
+MC vs Exact max diff < 3pp,PASS ✓,max_diff=0.13pp
+MC CV for paid_search < 50% (stable estimate),PASS ✓,std=582.75  mean=9309.01  cv=6.26%
+MC CV for linkedin < 50% (stable estimate),PASS ✓,std=430.26  mean=6895.03  cv=6.24%
+MC CV for webinar < 50% (stable estimate),PASS ✓,std=858.12  mean=5054.10  cv=16.98%
+MC CV for email_nurture < 50% (stable estimate),PASS ✓,std=817.07  mean=7084.77  cv=11.53%
+MC CV for direct < 50% (stable estimate),PASS ✓,std=838.53  mean=3187.98  cv=26.30%
+MC validation passes 2pp tolerance,PASS ✓,max_err=1.48pp
+Exact validation passes 2pp tolerance,PASS ✓,max_err=1.41pp
+Weakest GT channel also weakest in Shapley (dummy axiom directional),PASS ✓,weakest_gt=direct  weakest_shap=direct
+Shapley gap paid_search vs email_nurture proportional to GT gap (within 15pp),PASS ✓,gt_diff=8.0pp  shap_diff=7.1pp
+Shapley gap email_nurture vs linkedin proportional to GT gap (within 15pp),PASS ✓,gt_diff=1.0pp  shap_diff=0.6pp
+Shapley gap linkedin vs webinar proportional to GT gap (within 15pp),PASS ✓,gt_diff=7.0pp  shap_diff=5.8pp
+Shapley gap webinar vs direct proportional to GT gap (within 15pp),PASS ✓,gt_diff=6.0pp  shap_diff=5.9pp

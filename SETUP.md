@@ -72,8 +72,8 @@ Keep this running while you work — all experiment runs log here automatically.
 
 ```bash
 # Convert the certifications notebook to a clean HTML file (no code cells shown)
-jupyter nbconvert --to html 00_professional_development/Certifications.ipynb \
-  --no-input --output Certifications.html
+jupyter nbconvert --to html 00_professional_development/"Stepan Romanov — Certifications.ipynb" \
+  --no-input --output "Stepan Romanov — Certifications.html"
 ```
 
 ---
@@ -98,15 +98,3 @@ C:\Users\YourName\
 
 ---
 
-## Troubleshooting
-
-| Problem | Fix |
-|---|---|
-| `conda: command not found` | Restart terminal after Anaconda install |
-| `ModuleNotFoundError: mlflow` | `pip install mlflow` inside activated env |
-| `ModuleNotFoundError: meridian` | `pip install google-meridian==1.6.1` inside activated env |
-| JupyterLab opens wrong Python | Kernel → Change Kernel → marketing-portfolio |
-| Plotly charts not showing | `pip install ipywidgets` then restart kernel |
-| PyMC install fails | Use `conda install -c conda-forge pymc` — do not use pip |
-| TensorFlow/Meridian conflict with PyMC | Only occurs with pip. Use conda env create as above |
-| `kaleido` static export broken | Downgrade: `pip install kaleido==0.1.0` |
