@@ -227,6 +227,57 @@ A complete **multi-touch attribution comparison suite** evaluating 8 models (Mar
 
 ---
 
+**Project 06: PyMC MMM with External Regressors**
+
+**Bayesian MMM isolating media effects from macroeconomic and competitive confounders, with parameter-recovery validation and automated retraining**
+
+**Stack:** `pymc` · `arviz` · `scikit-learn` · `plotly` · `mlflow` · `dvc` · `numpy`
+
+
+---
+
+### 📋 Executive Summary
+
+This project builds a **native PyMC Media Mix Model** that augments standard media variables (**adstock** carry-over + **Hill saturation**) with **external control regressors** — competitor TV pressure, CPI, interest-rate delta, and holidays — so that estimated media ROAS is not contaminated by macroeconomic or competitive swings. The model is fully Bayesian (PyMC 6 / NUTS) and is validated by recovering injected ground-truth coefficients.
+
+**Key Insights:**
+- External controls absorb variance that naive models misattribute to paid media, materially shifting estimated channel effects.
+- **Sensitivity analysis** (perturbing each driver in real business units) quantifies how sales respond to competitor activity, inflation, and rate moves.
+- **Parameter recovery** confirms the sampler reconstructs known media *and* external-regressor coefficients, establishing trust in the inference.
+
+### 🎯 Business Impact
+
+- Produces **defensible ROAS estimates** by separating true media incrementality from confounding macro/competitive effects.
+- Enables **scenario stress-testing** of media plans against CPI shifts, rate changes, and competitor spend.
+- Posterior **ROAS confidence intervals** give decision-makers uncertainty bounds, not just point estimates.
+
+### What You'll Find in the Notebook
+
+- **Synthetic weekly data generation** with adstock/saturation media transforms and injected ground-truth betas for both media and external regressors.
+- **Model ladder for comparison**: naive OLS → adstock-only Ridge → full Bayesian PyMC with controls and Fourier seasonality.
+- **PyMC 6 model**: HalfNormal media priors, Normal external/Fourier priors, standardized target, NUTS sampling.
+- **MCMC convergence diagnostics** (R-hat, ESS) via `arviz-stats`; PPC, rank, and trace plots via `arviz-plots` (new split-arviz stack alongside Meridian's legacy shim).
+- **Parameter-recovery validation** — estimated vs. ground-truth coefficients in raw business units.
+- **Sensitivity analysis** perturbing external regressors in real units (competitor TV, CPI, rate delta).
+- **Posterior ROAS intervals** via leave-one-channel-out on posterior draws.
+- **Backtesting, drift detection, and Shapley-style decomposition** plus production MLOps blocks.
+- **Production SQL template** for weekly feature aggregation.
+
+### Skills Demonstrated
+
+- Bayesian media mix modeling in native PyMC (adstock + Hill saturation)
+- Control-variable / confounder adjustment with macroeconomic and competitive regressors
+- MCMC diagnostics on the modern split-arviz stack (`arviz-base`/`stats`/`plots`)
+- Parameter recovery & sensitivity analysis in business units
+- Posterior uncertainty quantification for ROAS
+- Production MLOps (MLflow + DVC) and reproducible experimentation
+
+**Folder:** [06_pymc_external_regressors/](https://github.com/stepanaromanov/python_for_marketing_research_and_analytics/tree/main/06_pymc_external_regressors)
+
+**Notebook:** [06_pymc_external_regressors.ipynb](https://github.com/stepanaromanov/python_for_marketing_research_and_analytics/blob/main/06_pymc_external_regressors/06_pymc_external_regressors.ipynb)
+
+---
+
 ## 📦 Legacy Work — `_legacy/`
 
 The [`_legacy/`](./_legacy/) folder contains an earlier collection of **11 Python notebooks** completed in 2023–2024, structured around DataCamp marketing analytics curriculum tracks. They cover the full core stack — pandas, scikit-learn, A/B testing, customer segmentation, churn modelling, and data pipeline engineering — applied to retail, banking, streaming, and education datasets.
