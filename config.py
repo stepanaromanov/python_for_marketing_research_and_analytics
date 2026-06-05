@@ -17,6 +17,7 @@ PALETTE_CATEGORICAL = [
 
 PALETTE_SEQUENTIAL = 'Viridis'
 PALETTE_DIVERGING  = 'RdYlGn'
+PALETTE_POLARITY   = 'RdBu'
 PLOTLY_TEMPLATE    = 'plotly_white'
 
 # Convenience aliases
