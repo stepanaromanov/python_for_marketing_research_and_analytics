@@ -278,6 +278,59 @@ This project builds a **native PyMC Media Mix Model** that augments standard med
 
 ---
 
+**Project 07: Customer Segmentation with Causal Uplift Validation**
+
+**Discovering customer segments and proving which ones actually respond to discounts — pairing K-means with a Double-ML causal forest, parameter-recovery checks, and budget-constrained targeting**
+
+**Stack:** `scikit-learn` · `econml` · `dowhy` · `shap` · `umap-learn` · `cvxpy` · `evidently` · `mlflow` · `dvc` · `plotly`
+
+---
+
+### 📋 Executive Summary
+
+This project segments **200,000 customers** on RFM + behavioral features, then uses a **CausalForestDML (Double ML)** model to estimate each segment's true response to a discount — separating genuine promotional incrementality from mere spending level. The segmentation is validated against injected ground-truth labels, and the causal estimates are validated by **recovering known per-segment treatment effects**, including a *negative* one. The result is a targeting policy that earns more incremental revenue than discounting the whole base.
+
+**Key Insights:**
+- **All four cluster-validity metrics agree.** The elbow, silhouette, Calinski-Harabasz, and Davies-Bouldin scores unanimously select K=4, and the discovered segments match the injected ground truth at **ARI = 0.98** — the structure is real, not imposed.
+- **Discounting loyal big-spenders backfires.** The causal forest recovers a **negative** uplift for high-value loyalists (estimated −14.5% vs injected −15%): they would have purchased anyway, so the coupon only gives away margin.
+- **Precision targeting beats blanket discounting.** Because of that one value-destroying segment, targeting only the positive-uplift segments earns more incremental revenue than treating everyone (**USD 19.4M vs 16.8M**), and the budget optimizer correctly sends **~0 spend** to the cannibalizing loyalists.
+
+### 🎯 Business Impact
+
+- Routes discount budget to the customers whose **behavior actually changes**, not just the highest spenders.
+- Flags **value-destroying over-discounting** of loyal customers — a common, expensive blind spot.
+- **Confidence intervals** on segment-level effects give decision-makers uncertainty bounds, not just point estimates.
+
+### What You'll Find in the Notebook
+
+- **Synthetic 200k-customer DGP** with injected per-segment ground-truth CATEs, soft (Dirichlet) membership, heavy-tailed noise, MAR/MCAR missingness, promo fatigue, and cohort drift.
+- **Optimal-K selection** via elbow + silhouette + Calinski-Harabasz + Davies-Bouldin, validated against ground-truth labels (ARI).
+- **CausalForestDML** per-customer CATE estimation with a decoupled confounder set; **LinearDML** for influence-function variance.
+- **DoWhy DAG identification** (backdoor criterion) with three refutation tests, plus **E-value** sensitivity to unmeasured confounding.
+- **Four-approach CATE-recovery comparison** (naive ATE → K-means means → raw forest → hybrid) scored by MAE.
+- **Counterfactual targeting policy** and a **CVXPY budget-constrained allocation LP**.
+- **T-Learner vs causal-forest uplift baseline** scored by Qini / AUUC.
+- IPW balance diagnostics, ANOVA heterogeneity test (η² = 0.91), three CI methods (IF, delta, Politis–Romano).
+- **SHAP** feature attribution, **UMAP / t-SNE** projections, holdout backtesting.
+- **Evidently** feature + CATE drift monitoring, plus production MLOps (MLflow, DVC, CI/CD heterogeneity gate).
+- **Production SQL template** for RFM + behavioral feature aggregation.
+
+### Skills Demonstrated
+
+- Unsupervised segmentation with rigorous K-selection and ground-truth validation (ARI)
+- Heterogeneous treatment-effect estimation with Double ML (EconML `CausalForestDML` / `LinearDML`)
+- Causal identification and refutation (DoWhy), sensitivity analysis (E-values)
+- Cannibalization / negative-uplift detection and budget-constrained targeting (CVXPY)
+- Uplift-model evaluation (Qini / AUUC), IPW balancing, posterior uncertainty quantification
+- Production MLOps (MLflow + DVC), drift monitoring (Evidently), reproducible experimentation
+
+**Folder:** [07_customer_segmentation_causal/](https://github.com/stepanaromanov/python_for_marketing_research_and_analytics/tree/main/07_customer_segmentation_causal)
+
+**Notebook:** [07_customer_segmentation_causal.ipynb](https://github.com/stepanaromanov/python_for_marketing_research_and_analytics/blob/main/07_customer_segmentation_causal/07_customer_segmentation_causal.ipynb)
+
+
+---
+
 ## 📦 Legacy Work — `_legacy/`
 
 The [`_legacy/`](./_legacy/) folder contains an earlier collection of **11 Python notebooks** completed in 2023–2024, structured around DataCamp marketing analytics curriculum tracks. They cover the full core stack — pandas, scikit-learn, A/B testing, customer segmentation, churn modelling, and data pipeline engineering — applied to retail, banking, streaming, and education datasets.

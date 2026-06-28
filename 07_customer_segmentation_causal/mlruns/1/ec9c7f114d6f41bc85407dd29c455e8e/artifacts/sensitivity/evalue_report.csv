@@ -1,0 +1,5 @@
+Segment,CATE (rel.),GT CATE,RR proxy,E-value (point),E-value (CI lower),Robustness
+At-risk churners,0.354,0.31,1.354,2.046,1.997,🟢 Strong — hard to explain away
+High-value loyalists,-0.090,-0.15,1.000,1.000,1.000,🔴 Fragile — weak unmeasured U sufficient
+New explorers,0.169,0.08,1.169,1.614,1.554,🟡 Moderate — some robustness
+Price-sensitive actives,0.100,0.22,1.100,1.431,1.383,🔴 Fragile — weak unmeasured U sufficient

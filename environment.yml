@@ -69,25 +69,39 @@ dependencies:
     # Optimisation
     - pulp==3.3.1
     - highspy==1.14.0
+    - cvxpy==1.9.1
+
     # Google Meridian MMM — pulls tensorflow 2.20 + tfp-nightly
     # arviz=0.19.0 shim installed first so Meridian's legacy import works
     - arviz==0.19.0
     - google-meridian==1.6.1
+   
     # MLflow
     - mlflow==3.12.0
+
     # DVC
     - dvc==3.51.0
+
     # Drift monitoring
-    - evidently==0.4.33
-    # Causal ML
+    - evidently==0.7.21
+
+    # Causal Inference
     - econml==0.16.0
+    - dowhy==0.14
+
     # Stats
     - pingouin==0.5.4
+
     # Plotly static export
     - kaleido==0.1.0
+
     # API serving
     - fastapi==0.136.1
     - uvicorn[standard]==0.46.0
     - pydantic==2.11.5
+
     # Explainability
-    - shap==0.46.0
+    - shap==0.48.0
+
+    # Dimensionality Reduction
+    - umap-learn==0.5.12
